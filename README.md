@@ -2,5 +2,7 @@
 
 Contributed by:
 
-Camilo Morales 
-Ahsan Iqbal
+- Lord commander: Ahsan Iqbal.
+- First watch: Camilo Morales.
+
+
