@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 import numpy as np
 import copy
@@ -10,7 +10,7 @@ import math
 from sklearn import svm
 
 
-# In[ ]:
+# In[2]:
 
 def init(params, trainSet, trainLabel, valSet, valLabel):
 
@@ -31,18 +31,35 @@ def init(params, trainSet, trainLabel, valSet, valLabel):
         return out_params_list
             
     def SVM(decision_function_shape = None):
+        
+        global_start_time = time.time()
+        
         svm_params = params["SVM"]
         param_configs = ParseParams(svm_params)
+        
+        print "Total configurations: "+ str(len(param_configs))
+        count = 0
+        
         best_accuracy = float('-inf')
         best_config = {}
         for config in param_configs:
+            current_start_time = time.time()
+            count+=1
+            print "Starting configuration: "+ str(count) +", params: "+ str(config)
             config['decision_function_shape'] = decision_function_shape
             model = svm.SVC(**config)
             model.fit(trainSet, trainLabel)
+            print "Model fit finished. Calculating accuracy."
             accuracy = model.score(valSet, valLabel)
+            print "Current setting accuracy: "+ str(accuracy)
             if accuracy > best_accuracy:
                 best_accuracy = accuracy
                 best_config = config
+            print "Current best accuracy: "+ str(best_accuracy)
+            current_elapsed_time_seconds = time.time() - current_start_time
+            print("------ Current setting execution time: %d seconds = %d minutes ------" % (current_elapsed_time_seconds, current_elapsed_time_seconds/60) )
+        total_elapsed_time_seconds = time.time() - global_start_time
+        print("--- Total execution time: %s seconds = %s minutes ---" % (total_elapsed_time_seconds, total_elapsed_time_seconds/60) )
         return best_config
         
     def MLP():
@@ -60,14 +77,4 @@ def init(params, trainSet, trainLabel, valSet, valLabel):
         "decision-tree": DecisionTree,
         "rbf-net":RBFNet
     }
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
 
