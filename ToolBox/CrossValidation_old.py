@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 import numpy as np
 import copy
@@ -11,7 +11,7 @@ from sklearn import svm
 import time
 
 
-# In[2]:
+# In[3]:
 
 def init(params, trainSet, trainLabel, valSet, valLabel):
 
@@ -49,7 +49,6 @@ def init(params, trainSet, trainLabel, valSet, valLabel):
             print "Starting configuration: "+ str(count) +", params: "+ str(config)
             config['decision_function_shape'] = decision_function_shape
             model = svm.SVC(**config)
-            #model = svm.LinearSVC(C=config["C"])
             model.fit(trainSet, trainLabel)
             print "Model fit finished. Calculating accuracy."
             accuracy = model.score(valSet, valLabel)

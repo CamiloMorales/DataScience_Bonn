@@ -1,0 +1,20 @@
+{
+  "SVM": {
+    "level": {
+      "param-name": "kernel",
+      "values": [
+        {
+          "name": "linear",
+          "level": {
+            "param-name": "C",
+            "values": [
+              {
+                "name": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

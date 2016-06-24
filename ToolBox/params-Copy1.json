@@ -1,0 +1,119 @@
+{
+  "SVM": {
+    "level": {
+      "param-name": "kernel",
+      "values": [
+        {
+          "name": "linear",
+          "level": {
+            "param-name": "C",
+            "values": [
+              {
+                "name": 1
+              },
+              {
+                "name": 10
+              },
+              {
+                "name": 100
+              }
+            ]
+          }
+        },
+        {
+          "name": "poly",
+          "level": {
+            "param-name": "degree",
+            "values": [
+              {
+                "name": 3,
+                "level": {
+                  "param-name": "C",
+                  "values": [
+                    {
+                      "name": 1
+                    },
+                    {
+                      "name": 10
+                    },
+                    {
+                      "name": 100
+                    }
+                  ]
+                }
+              },
+              {
+                "name": 6,
+                "level": {
+                  "param-name": "C",
+                  "values": [
+                    {
+                      "name": 1
+                    },
+                    {
+                      "name": 10
+                    },
+                    {
+                      "name": 100
+                    }
+                  ]
+                }
+              },
+              {
+                "name": 9,
+                "level": {
+                  "param-name": "C",
+                  "values": [
+                    {
+                      "name": 1
+                    },
+                    {
+                      "name": 10
+                    },
+                    {
+                      "name": 100
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "rbf",
+          "level": {
+            "param-name": "C",
+            "values": [
+              {
+                "name": 1
+              },
+              {
+                "name": 10
+              },
+              {
+                "name": 100
+              }
+            ]
+          }
+        },
+        {
+          "name": "sigmoid",
+          "level": {
+            "param-name": "C",
+            "values": [
+              {
+                "name": 1
+              },
+              {
+                "name": 10
+              },
+              {
+                "name": 100
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
