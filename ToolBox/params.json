@@ -16,5 +16,33 @@
         }
       ]
     }
+  },
+  "MLP": {
+    "input-dim":6,
+    "output-dim":5,
+    "max-steps": 17820,
+    "train-batch-size": 45,
+    "model-param-file": "/home/camilo/kaggle_DataScience_Bonn/models/model.ckpt",
+    "configs":[[{
+      "name":"layer1",
+      "num-units":50,
+      "trans-func":"sigmoid",
+      "keep-prob":0.9
+    },{
+      "name":"layer2",
+      "num-units":40,
+      "trans-func":"relu",
+      "keep-prob":0.7
+    },{
+      "name":"layer3",
+      "num-units":20,
+      "trans-func":"sigmoid",
+      "keep-prob":0.7
+    },{
+      "name":"layer5",
+      "num-units":5,
+      "trans-func":"softmax",
+      "keep-prob":1.0
+    }]]
   }
 }
