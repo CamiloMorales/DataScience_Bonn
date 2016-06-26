@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[2]:
 
 import numpy as np
 
@@ -16,7 +16,15 @@ def init():
     def z_score_normalize(data, mean, std):
         for idx,x in enumerate(data):
             data[idx] = np.divide(np.subtract(x, mean), std)
+        return data
+    
+    return {
+            'z_score_compute': z_score_compute,
+            'z_score_normalize': z_score_normalize
+        }
 
 
-        
+# In[ ]:
+
+
 

@@ -18,8 +18,8 @@
     }
   },
   "MLP": {
-    "input-dim":6,
-    "output-dim":5,
+    "input-dim":5,
+    "output-dim":6,
     "max-steps": 17820,
     "train-batch-size": 45,
     "model-param-file": "/home/camilo/kaggle_DataScience_Bonn/models/model.ckpt",
@@ -40,7 +40,7 @@
       "keep-prob":0.7
     },{
       "name":"layer5",
-      "num-units":5,
+      "num-units":6,
       "trans-func":"softmax",
       "keep-prob":1.0
     }]]

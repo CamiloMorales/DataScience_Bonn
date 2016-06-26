@@ -7,11 +7,11 @@ import tensorflow as tf
 import numpy as np
 
 
-# In[ ]:
+# In[7]:
 
 def init(config_networks):
     
-    graph1 = tf.graph()
+    graph1 = tf.Graph()
     with graph1.as_default():
         
         x = tf.placeholder(tf.float32, shape=[None, config_networks["input-dim"]])
@@ -24,9 +24,9 @@ def init(config_networks):
         '''
         
         def create_variable(name, shape):
-            return tf.get_variable(name, intializer=tf.truncated_normal(shape, stddev=0.1))
+            return tf.get_variable(name, initializer=tf.truncated_normal(shape, stddev=0.1))
 
-        def create_mlp(config, x, input_dimm):
+        def create_mlp(config, x, input_dim):
             for idx,layer in enumerate(config):
                 with tf.variable_scope("layer_{0}".format(idx)):
                     W = create_variable("weights", [input_dim, layer["num-units"]])
@@ -48,7 +48,7 @@ def init(config_networks):
         
         def train(data):
             with tf.Session(graph=graph1) as session:
-                session.initialize_all_variables()
+                session.run(tf.initialize_all_variables())
                 
                 '''
                 probs = {}
@@ -60,23 +60,22 @@ def init(config_networks):
                 for i in xrange(config_networks['max-steps']):
                     batch_x = data["x"][start:(start+config_networks['train-batch-size']), :]
                     batch_y = data["y"][start:(start+config_networks['train-batch-size']), :]
-                    
-                    start = (start + config_networks['train-batch-size']) % data[x].shape[0]
-                    
+                    start = (start + config_networks['train-batch-size']) % data["x"].shape[0]
                     session.run(train_steps, feed_dict={x:batch_x, y:batch_y})
-                saver.save(session, network_config['model-param-file'])
+                saver.save(session, config_networks['model-param-file'])
         
         def predict(data):
             results = {}
             with tf.Session(graph=graph1) as session:
-                saver.restore(session, network_config['model-param-file'])
+                saver.restore(session, config_networks['model-param-file'])
                 for idx,network in enumerate(config_networks["configs"]):
                     results["network_{0}".format(idx)] = []
                     for x_test in data:
-                        results["network_{0}".format(idx)].append(tf.get_tensor_by_name(
+                        x_test = np.reshape(x_test, [1,x_test.shape[0]])
+                        results["network_{0}".format(idx)].append(graph1.get_tensor_by_name(
                                 '{0}/{1}/activation:0'.format('network_{0}'.format(idx), 
                                         'layer_{0}'.format(len(network)-1))).eval(feed_dict={x:x_test}))
-            return result
+            return results
         
         return {
             'predict': predict,
