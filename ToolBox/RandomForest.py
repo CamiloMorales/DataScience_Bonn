@@ -20,10 +20,14 @@ def init(config_random_forests):
 
     def predict(test_data, model):
         return model.predict(test_data)
+    
+    def predict_probabilities(test_data, model):
+        return model.predict_proba(test_data)
 
     return {
+        'train': train,
         'predict': predict,
-        'train': train
+        'predict_probabilities': predict_probabilities
     }
 
 
