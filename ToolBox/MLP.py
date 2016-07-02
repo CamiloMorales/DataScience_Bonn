@@ -7,7 +7,7 @@ import tensorflow as tf
 import numpy as np
 
 
-# In[7]:
+# In[ ]:
 
 def init(config_networks):
     
@@ -64,17 +64,18 @@ def init(config_networks):
                     session.run(train_steps, feed_dict={x:batch_x, y:batch_y})
                 saver.save(session, config_networks['model-param-file'])
         
-        def predict(data):
+        def predict(data, layer_num = None):
             results = {}
+                
             with tf.Session(graph=graph1) as session:
                 saver.restore(session, config_networks['model-param-file'])
                 for idx,network in enumerate(config_networks["configs"]):
                     results["network_{0}".format(idx)] = []
+                    if layer_num is None:
+                        layer_num = len(network)-1
                     for x_test in data:
                         x_test = np.reshape(x_test, [1,x_test.shape[0]])
-                        results["network_{0}".format(idx)].append(graph1.get_tensor_by_name(
-                                '{0}/{1}/activation:0'.format('network_{0}'.format(idx), 
-                                        'layer_{0}'.format(len(network)-1))).eval(feed_dict={x:x_test}))
+                        results["network_{0}".format(idx)].append(graph1.get_tensor_by_name('{0}/{1}/activation:0'.format('network_{0}'.format(idx), 'layer_{0}'.format(layer_num))).eval(feed_dict={x:x_test}))
             return results
         
         return {
