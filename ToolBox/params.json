@@ -25,27 +25,11 @@
     "model-param-file": "/home/camilo/kaggle_DataScience_Bonn/models/model.ckpt",
     "configs":[[{
       "num-units":50,
-      "trans-func":"sigmoid",
+      "trans-func":"tanh",
       "keep-prob":0.9
     },{
-      "num-units":40,
-      "trans-func":"relu",
-      "keep-prob":0.7
-    },{
-      "num-units":20,
-      "trans-func":"sigmoid",
-      "keep-prob":0.7
-    },{
-      "num-units":50,
-      "trans-func":"sigmoid",
-      "keep-prob":0.9
-    },{
-      "num-units":40,
-      "trans-func":"relu",
-      "keep-prob":0.7
-    },{
-      "num-units":20,
-      "trans-func":"sigmoid",
+      "num-units":100,
+      "trans-func":"tanh",
       "keep-prob":0.7
     },{
       "num-units":5,
