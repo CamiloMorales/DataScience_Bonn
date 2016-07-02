@@ -23,7 +23,7 @@
     "max-steps": 35640,
     "train-batch-size": 45,
     "model-param-file": "./models/model.ckpt",
-    "configs":[[{
+    "layer-defs":[{
       "num-units":50,
       "trans-func":"tanh",
       "keep-prob":0.9
@@ -31,11 +31,7 @@
       "num-units":100,
       "trans-func":"tanh",
       "keep-prob":0.7
-    },{
-      "num-units":5,
-      "trans-func":"softmax",
-      "keep-prob":1.0
-    }]]
+    }]
   },
   "MLPandRF": {
     "MLP": {
@@ -44,7 +40,7 @@
       "max-steps": 35640,
       "train-batch-size": 45,
       "model-param-file": "./models/model.ckpt",
-      "configs":[[{
+      "layer-defs":[{
         "num-units":50,
         "trans-func":"tanh",
         "keep-prob":0.9
@@ -52,11 +48,7 @@
         "num-units":100,
         "trans-func":"tanh",
         "keep-prob":0.7
-      },{
-        "num-units":5,
-        "trans-func":"softmax",
-        "keep-prob":1.0
-      }]]
+      }]
     },
     "RF":{
       "n_estimators" : 15,
