@@ -12,10 +12,8 @@ from sklearn.ensemble import RandomForestClassifier
 def init(config_random_forests):
 
     def train(data):
-        labels = data[:,0]
-        train = data[:,1:]
         model = RandomForestClassifier(**config_random_forests)
-        model.fit(train, labels)
+        model.fit(data['x'], data['y'])
         return model
 
     def predict(test_data, model):
