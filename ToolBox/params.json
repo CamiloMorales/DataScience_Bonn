@@ -22,7 +22,7 @@
     "output-dim":5,
     "max-steps": 35640,
     "train-batch-size": 45,
-    "model-param-file": "/home/camilo/kaggle_DataScience_Bonn/models/model.ckpt",
+    "model-param-file": "../models/model.ckpt",
     "configs":[[{
       "num-units":50,
       "trans-func":"tanh",
@@ -43,7 +43,7 @@
       "output-dim":5,
       "max-steps": 35640,
       "train-batch-size": 45,
-      "model-param-file": "/home/camilo/kaggle_DataScience_Bonn/models/model.ckpt",
+      "model-param-file": "../models/model.ckpt",
       "configs":[[{
         "num-units":50,
         "trans-func":"tanh",
