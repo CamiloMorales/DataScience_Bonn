@@ -36,5 +36,36 @@
       "trans-func":"softmax",
       "keep-prob":1.0
     }]]
+  },
+  "MLPandRF": {
+    "MLP": {
+      "input-dim":5,
+      "output-dim":5,
+      "max-steps": 35640,
+      "train-batch-size": 45,
+      "model-param-file": "/home/camilo/kaggle_DataScience_Bonn/models/model.ckpt",
+      "configs":[[{
+        "num-units":50,
+        "trans-func":"tanh",
+        "keep-prob":0.9
+      },{
+        "num-units":100,
+        "trans-func":"tanh",
+        "keep-prob":0.7
+      },{
+        "num-units":5,
+        "trans-func":"softmax",
+        "keep-prob":1.0
+      }]]
+    },
+    "RF":{
+      "n_estimators" : 15,
+      "criterion" : "gini",
+      "max_depth" : 10,
+      "min_samples_split" : 10,
+      "min_samples_leaf" : 1,
+      "max_features" :0.75,
+      "n_jobs" : 8
+    }
   }
 }
