@@ -69,7 +69,8 @@ def init(config_mlp):
                     x_test = np.reshape(x_test, [1,x_test.shape[0]])
                     results.append(graph1.get_tensor_by_name('{0}/activation:0'.format('layer_{0}'.format(layer_num))).eval(feed_dict={x:x_test}))
             
-            return results
+            results = np.array(results)
+            return np.reshape(results, [results.shape[0], results.shape[2]])
         
         return {
             'predict': predict,

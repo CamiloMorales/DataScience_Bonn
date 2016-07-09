@@ -45,16 +45,20 @@
         "trans-func":"tanh",
         "keep-prob":0.9
       },{
+        "num-units":10,
+        "trans-func":"tanh",
+        "keep-prob":0.9
+      },{
         "num-units":100,
         "trans-func":"tanh",
         "keep-prob":0.7
       }]
     },
     "RF":{
-      "n_estimators" : 15,
+      "n_estimators" : 100,
       "criterion" : "gini",
       "max_depth" : 10,
-      "min_samples_split" : 10,
+      "min_samples_split" : 30,
       "min_samples_leaf" : 1,
       "max_features" :0.75,
       "n_jobs" : 8
