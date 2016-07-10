@@ -23,6 +23,7 @@
     "max-steps": 35640,
     "train-batch-size": 45,
     "model-param-file": "./models/model.ckpt",
+    "save-model" : 1,
     "layer-defs":[{
       "num-units":50,
       "trans-func":"tanh",
@@ -40,6 +41,7 @@
       "max-steps": 35640,
       "train-batch-size": 45,
       "model-param-file": "./models/model.ckpt",
+      "save-model" : 1,
       "layer-defs":[{
         "num-units":50,
         "trans-func":"tanh",
@@ -63,5 +65,31 @@
       "max_features" :0.75,
       "n_jobs" : 8
     }
+  },
+  "GP_MLP": {
+    "population-size": 200,
+    "min-layers": 2,
+    "max-layers": 15,
+    "min-units": 10,
+    "max-units": 50,
+    "survival-size": 100,
+    "max-steps": 1000,
+    "save-model" : 1,
+    "functions": ["sigmoid", 
+                  "tanh", 
+                  "relu", 
+                  "relu6", 
+                  "elu", 
+                  "softplus",
+                  "softsign"],
+    "MLP": {
+    "input-dim":5,
+    "output-dim":5,
+    "max-steps": 35640,
+    "train-batch-size": 45,
+    "model-param-file": "/home/camilo/kaggle_DataScience_Bonn/models/model.ckpt",
+    "save-model" : 1
+    }
   }
 }
+

@@ -55,7 +55,9 @@ def init(config_mlp):
                     batch_y = data["y"][start:(start+config_mlp['train-batch-size']), :]
                     start = (start + config_mlp['train-batch-size']) % data["x"].shape[0]
                     session.run(train_step, feed_dict={x:batch_x, y:batch_y})
-                saver.save(session, config_mlp['model-param-file'])
+
+                if config_mlp['save-model'] == 1:
+                    saver.save(session, config_mlp['model-param-file'])
         
         def predict(data, layer_num = None):
             results = []
@@ -68,7 +70,6 @@ def init(config_mlp):
                 for x_test in data:
                     x_test = np.reshape(x_test, [1,x_test.shape[0]])
                     results.append(graph1.get_tensor_by_name('{0}/activation:0'.format('layer_{0}'.format(layer_num))).eval(feed_dict={x:x_test}))
-            
             results = np.array(results)
             return np.reshape(results, [results.shape[0], results.shape[2]])
         
