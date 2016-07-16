@@ -73,7 +73,7 @@
     "min-units": 10,
     "max-units": 50,
     "survival-size": 100,
-    "max-steps": 1000,
+    "max-steps": 100,
     "save-model" : 1,
     "functions": ["sigmoid", 
                   "tanh", 
